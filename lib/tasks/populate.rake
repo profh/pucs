@@ -10,7 +10,7 @@ namespace :db do
     require 'faker'
     
     # Step 0: clear any old data in the db
-    [User, Household, Guardian, Student].each(&:delete_all)
+    [User, Household, Guardian, Student, Administrator, Announcement, PrivacySetting].each(&:delete_all)
     
     # Step 1: add a default admin
     # first, create a new user

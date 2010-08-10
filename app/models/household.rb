@@ -19,8 +19,8 @@ class Household < ActiveRecord::Base
   validates_format_of :home_phone, :with => /^\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}$/, :message => "should be 10 digits", :allow_blank => true
   validates_format_of :zip, :with => /^\d{5}$/, :message => "should be 5 digits"
   validates_inclusion_of :status, :in => [1,2], :allow_blank => true
-  validates_inclusion_of :state, :in => STATES_LIST.map {|key, value| value}, :message => "is not an option", :allow_nil => true, :allow_blank => true
-  # validates_inclusion_of :state, :in => %w[PA OH WV]
+  # validates_inclusion_of :state, :in => STATES_LIST.map {|key, value| value}, :message => "is not an option", :allow_nil => true, :allow_blank => true
+  validates_inclusion_of :state, :in => %w[PA OH WV]
   validates_format_of :city, :with => /^[a-z. -]+$/i
   
   # Paperclip Validations
