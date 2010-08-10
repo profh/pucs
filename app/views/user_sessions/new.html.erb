@@ -1,0 +1,24 @@
+<h1>Welcome to the PUCS Family Portal</h1>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Where we keep you connected to what's going on at PUCS</h3>
+<div class="contentlines"></div>
+<table width="900">
+<tr>
+	<td>
+		<%= image_tag("Login_pic.jpg") %></td>
+	<td width="50px">&nbsp;</td>
+	<td class="borderwshading" >
+	<% form_for @user_session do |f| %>
+	  <%= f.error_messages %>
+		<h4 align="left">Please enter your username and password</h4>
+		<p class="linkstext" align="left">
+		  <%= f.label :username %><br />
+		  <%= f.text_field :username %><br /><br />
+		  <%= f.label :password %><br />
+		  <%= f.password_field :password %><br /><br />
+		  <%= f.submit "Login" %> &nbsp; &nbsp;
+		<% end %>
+    <%= link_to "Forgot Password? Click Here", forgot_password_path %>
+    </p>
+		</td>
+</tr>
+</table>

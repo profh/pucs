@@ -1,0 +1,25 @@
+<% semantic_form_for(@student) do |f| %>
+  <%# f.error_messages %>
+	
+	<% f.inputs do %> 
+		<%if current_user.admin?%>
+		<%= f.input :household, :required => true, :collection => Household.active.by_guardians.map{|h| [h.name,h.id]} %>
+		<% end %>
+		<%= f.input :first_name, :required => true %>
+		<%= f.input :last_name, :required => true %> 
+		<%= f.input :grade, :as => :select, :collection => GRADE_LIST, :required => false %>  
+  	<%= f.input :dob, :label => "Date of Birth", :required => false, :order => [:month, :day, :year], :start_year => Time.now.year - 16, :end_year => Time.now.year - 4 %>  
+  	<%= f.input :ethnicity, :as => :select, :collection => RACE_LIST, :required => false %>  
+		<%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Female", true], ["Male", false]], :required => false %>
+  	<% if current_user.admin? %>
+			<%= f.input :engrade_id, :as => :string, :label => "Engrade ID", :hint => "optional -- can be added later", :required => false %> 	
+		<% end %>
+		<% if current_user.admin? %>
+			<%= f.input :active, :as => :radio, :label => "Active", :collection => [["Yes", true], ["No", false]], :required => false %>	
+		<%end%>
+	<% end %>
+
+  <%= f.buttons %>
+  
+
+<% end %>

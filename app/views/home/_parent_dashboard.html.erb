@@ -1,0 +1,60 @@
+<h1><%= current_user.guardian.first_name %>'s Dashboard</h1>
+<div class="contentlines"></div>
+<table border="0">
+	<tr><!-- left column -->
+		<td valign="top">
+			<div class="announcement_content">
+				<h2>Friendly Reminders</h2>
+                  <ul>
+                  <% for announcement in @announcements %>
+                      <li><%= h announcement.contents %></li><br />
+                  <% end %>
+                  </ul>
+			</div>
+         </td>
+
+		<td width="50">&nbsp;</td>
+		
+
+		<td valign="top"><!-- right column -->
+			<%= render :partial => 'volunteer_mockup' %>
+		</td>
+   </tr>
+
+   <tr>
+        <td class="quicklinks">
+          <h2>Quick Links</h2>
+		<div class="quicklinksicons"><%= link_to(image_tag("edit_profile.png", :border => 0), edit_guardian_path(current_user.guardian)) %>  </div>
+        <div class="quicklinkstext"><%= link_to "Click here to edit my personal profile", edit_guardian_path(current_user.guardian) %></div>
+        <br /><br />
+        <div class="quicklinksicons"><%= link_to(image_tag("edit_home.png", :border => 0), edit_household_path(current_user.guardian.household)) %></div>
+        <div class="quicklinkstext"><%= link_to "Click here to edit my household information", edit_household_path(current_user.guardian.household) %></div>
+        </td>
+
+        <td></td>
+        
+        <td class="border"><!-- student datagrid -->
+            <h2>My Students</h2>
+			<p>Below is a list of your students at PUCS.  Click on the child's name to review their
+            information or the edit icon to modify their data.</p>
+			<table class="datagrid">
+			  <thead class="datagrid">
+			    <th width="100">Child</th>
+			    <th width="100">Grades</th>
+				<th>Edit</th>
+			  </thead>
+
+			<% for student in @students %>
+			  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+			    <td>&nbsp;<%= link_to( h(student.first_name), student_path(student)) %></td>
+			    <td><%= link_to( "View Grades", "http://www.engrade.com/login.php" ) %></td>
+			    <td align="center">
+					<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_student_path(student))  %>&nbsp;
+					<%# link_to(image_tag("icons/delete_dg.gif", :border => 0), student_path(student), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+				</td>
+			  </tr>
+			<% end %>
+			</table>
+		</td>
+	</tr>
+</table>

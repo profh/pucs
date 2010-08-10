@@ -1,0 +1,30 @@
+<%# HOUSEHOLD FIELDS %>
+		 <p>
+		   <%= household_form.label :street, "Street address" %><br />
+		   <%= household_form.text_field :street  %>
+		 </p>
+		 <p>
+		   <%= household_form.label :city %><br />
+		   <%= household_form.text_field :city %>
+		 </p>
+		 <p>
+		   <%= household_form.label :state %><br />
+		   <%= household_form.select :state, STATES_LIST %>
+		 </p>
+		<p>
+			<%= household_form.label :zip, "Zip code" %><br />
+			<%= household_form.text_field :zip %>
+		</p>
+		<p>
+			<%= household_form.label :home_phone, "Home phone number" %><br />
+			<%= household_form.text_field :home_phone %>
+		</p>
+		<p>
+			<%= household_form.label :free_lunch, "Eligible for free/discounted lunch?" %> <br />
+			<%= household_form.radio_button :free_lunch, true %>Yes <br />
+			<%= household_form.radio_button :free_lunch, false %>No
+		</p>
+		<p>
+			<%= household_form.label :status, "Household status" %><br />
+			<%= household_form.select :status, HOUSEHOLD_STATUS_LIST, :prompt => "Select..." %>
+		</p>

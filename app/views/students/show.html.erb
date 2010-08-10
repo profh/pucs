@@ -1,0 +1,59 @@
+<h1><%=h @student.first_name %>'s
+<%=h "Profile Information" %></h1>
+<div class="contentlines"></div>
+
+
+<p>
+  <b>Student Name:</b>
+  <%=h @student.name %>
+</p>
+
+
+<p>
+  <b>Gender:</b>
+  <%=h @student.gender %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%=h @student.dob.strftime('%B') %>
+  <%=h @student.dob.day %>,
+  <%=h @student.dob.year %>
+
+</p>
+
+<p>
+  <b>Ethnicity:</b>
+  <%=h @student.race %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @student.household.street %><br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%=h @student.household.city %>,
+  <%=h @student.household.state %>
+  <%=h @student.household.zip %>
+</p>
+
+<p>
+  <b>Grade:</b>
+  <%=h @student.new_grade %>
+</p>
+
+<p>
+  <b>Engrade:</b>
+  <a href= http://www.engrade.com/>Link to Engrade</a>
+</p>
+
+<%if current_user.admin?%>
+<p>
+  <b>Acvtive:</b>
+  <%=h @student.active %>
+</p>
+<%end%>
+
+<p align="right"><%= link_to(image_tag("icons2/student_edit_icon1.png", :border => 0),  edit_student_path(@student)) %>
+	<%= link_to 'Click here to edit', edit_student_path(@student) %>
+<br>
+<%= link_to 'Back to My Family', guardian_path(current_user.guardian) %></p>

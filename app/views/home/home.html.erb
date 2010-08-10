@@ -1,0 +1,7 @@
+<% if current_user.role == "admin" %>
+	<%= render :partial => 'admin_dashboard' %>
+<% else %>
+  <%= render :partial => 'parent_dashboard' %>
+<% end %>
+
+

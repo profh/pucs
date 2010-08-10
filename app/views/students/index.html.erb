@@ -1,0 +1,39 @@
+<h1>Select Student to Edit</h1>
+<div class="contentlines"></div>
+
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="150">Student</th>
+    <th width="75" align="center">Grade</th>
+	<th width="190">Guardian</th>
+	<th>Actions</th>
+  </thead>
+
+<% for student in @students %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to( h(student.name), student_path(student)) %></td>
+    <td align="center"><%=h student.new_grade %></td>
+    <td><%= h student.household.name %></td>
+	<td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_student_path(student))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), student_path(student), :confirm => 'Are you sure you wish to make this student inactive?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @students %>
+
+<br />
+<div>
+	<div class="linksicons"><%= link_to(image_tag("Icons2/student_add_icon.png", :border => 0), new_student_path)%></div>
+	<div class="linkstext"><%= link_to "Click to add a new student", new_student_path %></div>
+</div>
+
+
+
+
+
+

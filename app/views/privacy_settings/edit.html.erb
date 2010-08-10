@@ -1,0 +1,69 @@
+<h1>Edit Privacy Settings</h1>
+<div class="contentlines"></div>
+
+<p>These setting affect what is viewed in the PUCS Directory. The Directory can not be viewed by
+the general public, <br />it can only be viewed by the members of the PUCS family who are logged in.</p>
+
+
+<% semantic_form_for(@privacy_setting) do |f| %>
+  	<%# f.error_messages %>
+
+		<% f.inputs do %>
+	<table>
+			
+			<tr>
+			<td width="40px"><%= f.check_box :public_names, :required => true %></td>
+			<td valign="top"><h3>Add your family to the directory</h3>
+				<p>If this checkbox is selected, your family will be included in the directory. If the checkbox is not selected, your family will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_address, :required => true %></td>
+			<td valign="top"><h3>Publish your address to the directory</h3>
+				<p>If this checkbox is selected, your address will be included in the directory. If the box is not selected, your information will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_children, :required => true %></td>
+			<td><p><h3>Publish your children's information to the directory</h3></p>
+                <p>If this checkbox is selected, your child's name and grade will be included in the directory. If the box is not selected, the information will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_emails, :required => false %></td>
+			<td><p><h3>Publish your email address to the directory</h3></p>
+                <p>If this checkbox is selected, your email address will be included in the directory. If the box is not selected, your email will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_demographics, :hint => "demographics include ethnicity and gender", :required => false %></td>
+			<td><p><h3>Publish your demographics to the directory</h3></p>
+                <p>If this checkbox is selected, your demographics will be included in the directory. The Demographics will display your ethnicity and gender.  If the box is not selected, demographics will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_home_phone, :required => false %></td>
+			<td><p><h3>Publish your home phone number to the directory</h3></p>
+                <p>If this checkbox is selected, the number for your home phone will be included in the directory. If the box is not selected, your home phone number will not appear in the directory.</p>
+			</td>
+			</tr>
+			
+			<tr>
+			<td><%= f.check_box :public_other_phones, :required => false %></td>
+			<td><p><h3>Publish your other phone numbers to the directory</h3></p>
+                <p>If this checkbox is selected, your other phones will be included in the directory. The other phones may include your mobile or work numbers. If the box is not selected, your other phone numbers will not appear in the directory.</p>
+			</td>
+			</tr>		
+			
+	</table>	
+		
+		<% end %>
+	
+	<%= f.buttons %>
+
+<% end %>

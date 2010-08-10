@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!-- need the xmlns attr for formtastic -->
+
+<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="robots" content="FOLLOW,INDEX" />
+		<meta name="description" content="Backend Portal for the Pittsburgh Urban Christian School Family Management System" />
+		<meta name="keywords" content="pittsburgh urban christian school" />
+		<title>PUCS :: <%= controller.controller_name.capitalize %></title>
+		<link rel="shortcut icon" href="/favicon4.ico" type="image/x-icon" />
+		
+		<%= stylesheet_link_tag 'pucs_main', 'formtastic', 'formtastic_changes', 'profh_styles', 'datagrid', :cache => 'base' %>
+		<%= javascript_include_tag 'jquery-1.4.2.min', 'jquery-ui-1.8.2.min', 'application' %>
+</head>
+
+<body>
+	<div id="container"><!-- Beginning of container div -->
+		
+		 <div class="header">
+       <a name="topofpage"></a>
+       	<div class="headwrap">
+			<table class="theader">
+				<tr>
+					<td>
+						<div id="logo">
+							<% if current_user.nil? %>
+								<%= link_to(image_tag("logo.png", :class => "logo", :alt => "PUCS logo"), root_url ) %>
+							<% else %>
+								<%= link_to(image_tag("logo.png", :class => "logo", :alt => "PUCS logo"), home_path("home") ) %>
+							<% end %>
+						</div><!-- End of logo div -->
+					</td>
+					<td width="300"></td>
+					<td>
+						<div id="welcome">
+							<% if logged_in? and current_user.role == "guardian" %>
+								<p class="log"><strong>
+									<font color=#0D96FE>Welcome, <%= current_user.guardian.first_name %> <%= current_user.guardian.last_name %></font></strong>&nbsp;&nbsp;
+									<strong>:: &nbsp; <%= link_to "Logout", logout_path %></strong>
+					
+							<% elsif logged_in? && current_user.role == "admin" %>
+								<p class="log"><strong>	
+
+									<font color="#0D96FE"> Welcome, <%= current_user.administrator.first_name %> <%= current_user.administrator.last_name %></font></strong>&nbsp;&nbsp;<strong>:: &nbsp; <%= link_to "Logout", logout_path %></strong>
+								<!-- <p>You have accessed this page illegally.<br />You will be terminated.</p> -->
+							<% end %>
+						</div><!-- End of welcome div -->
+					</td>
+					</tr>
+				</table>
+			</div><!-- End of headwrap div -->
+		</div><!-- End of header div -->
+		
+		<br />
+		
+					<div class="nav">
+                         <div class="menu"> 
+									<% if logged_in? && current_user.role == "admin" %> <%# if current_user.is_admin? %>
+										<%= render :partial => 'partials/admin_nav' %>
+									<% elsif logged_in? && current_user.role == "guardian"  %>
+										<%= render :partial => 'partials/parent_nav' %>
+									<% end %>
+                          </div> 
+					</div><!-- close nav div -->
+
+        <div class="spacer"></div>
+		
+		
+		<div class='box'>
+ <div class='boxtop'><div></div></div>
+  <div class='boxcontent'>
+   <!-- Content goes here -->
+   
+   	<%- flash.each do |name, msg| -%>
+		   <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<%- end -%>
+		<%= yield %>
+   
+   
+  </div>
+ <div class='boxbottom'><div></div></div>
+</div>
+
+		
+		 <!-- Footer to partial -->
+		 <%# Add footer %>	
+   		 <%= render :partial => 'partials/footer' %>
+	</div><!-- End of container div -->
+</body>
+
+		
+		

@@ -1,0 +1,24 @@
+<p>
+	<b>Household Photo:</b>
+	<br />
+	<%= image_tag @household.photo.url %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%=h @household.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @household.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @household.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_household_path(@household) %> |
+<%= link_to 'Back', households_path %>

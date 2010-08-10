@@ -1,0 +1,29 @@
+<h1>Announcements</h1>
+<div class="contentlines"></div>
+
+<p>Below is a list of all announcements in the PUCS Portal, with the most recent posts listed on top.<br />
+</p>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;<em><%= link_to ("#{image_tag("Icons2/megaphone16x16_add.png", :border=>0)}Add a new announcement", new_announcement_path) %></em>
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="400">Announcement</th>
+    <th width="150" align="center">Dates</th>
+	  <th>&nbsp;</th>
+  </thead>
+
+<% for announcement in @announcements %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to( truncate(h(announcement.contents),70), announcement_path(announcement)) %></td>
+    <td align="center"><%=h announcement.start_date.strftime("%b %e") %> - <%=h announcement.end_date.strftime("%b %e") %></td>
+    <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_announcement_path(announcement))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), announcement_path(announcement), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @announcements, :previous_label => "&lt;&nbsp;Previous&nbsp;", :next_label => "&nbsp;Next&nbsp;&gt;" %>
+
+<br /><br />

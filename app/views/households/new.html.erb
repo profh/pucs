@@ -1,0 +1,54 @@
+<h1>Add a New Family</h1>
+<div class="contentlines"></div>
+
+<% form_for(@household) do |household_form| %>
+  <%= household_form.error_messages %>
+	
+<table border="0">
+	<tbody>
+		<tr>
+			<td valign="top">
+						<!-- Add a guardian -->
+						<div class="announcement_content">
+							<h2>Step 1: Guardian Information</h2>
+									<% household_form.fields_for :guardians do |guardian_form| %>
+									<%= render :partial => 'guardian_fields', :locals => { :f => guardian_form } %>
+									<% end %>
+									<p class="linkstext"><%= image_tag("/images/icons/add.gif", :border => 0) %>
+                                    <%= link_to_add_fields "Add another guardian", household_form, :guardians %></p>
+
+                         </div>
+			</td>
+			<td width="5">&nbsp;</td>
+			<td valign="top">
+						<!-- Add a student -->
+						<div class="volunteer_content">
+									<h2>Step 2: Student Information</h2>
+											<% household_form.fields_for :students do |student_form| %>
+											<%= render :partial => 'student_fields', :locals => { :f => student_form } %>
+											<% end %>
+                                            <p class="linkstext"><%=  image_tag("/images/icons/add.gif", :border => 0) %>
+											<%= link_to_add_fields "Add another student", household_form, :students %></p>
+						</div>
+					<br />
+					<br />
+					<br />
+						<!-- Add a household -->
+						<div class="volunteer_content" align="top">
+							  			<h2>Step 3: Household Information</h2>
+							 			<%= render :partial => 'household_fields', :locals => { :household_form => household_form } %>
+						</div>
+					<br />
+					<br />
+					<br />
+						<div class="announcement_content">
+  									<h2>Step 4: Submit Your Information</h2>
+    								<%= household_form.submit 'Submit' %><br /><br />
+                               		<% end %>
+                                    
+						</div>
+			</td>
+		</tr>
+
+	</tbody>
+</table>

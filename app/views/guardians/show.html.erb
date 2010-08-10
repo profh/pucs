@@ -1,0 +1,127 @@
+<h1>The <%=h @guardian.last_name %> Family</h1>
+<div class="contentlines"></div>
+<table border="0">
+	<tr>
+		<!-- left column -->
+		<td valign="top" width="400">
+			<h2>My Profile </h2>
+			<p>
+			  <strong>Name:</strong>
+			  <%=h @guardian.first_name %> <%=h @guardian.last_name %>
+			</p>
+			<p>
+			  <strong>Gender:</strong>
+			  <%=h @guardian.gender %>
+			</p>
+			<p>
+			  <strong>Email:</strong>
+
+			  <%=h @guardian.user.email %>
+
+			</p>
+			<p>
+			  <strong>Mobile phone:</strong>
+			  <%= number_to_phone (h @guardian.mobile_phone)%>
+			</p>
+			<p>
+			  <strong>Work phone:</strong>
+			  <%= number_to_phone (h @guardian.work_phone)%>
+			</p>
+			<p>
+			  <strong>Ethnicity:</strong>
+			  <%=h @guardian.race %>
+			</p>
+			
+      <div>
+              <div class="linksicons"><%= link_to(image_tag("edit_profile_small.png", :border => 0), edit_guardian_path(current_user.guardian)) %>  </div>
+              <div class="linkstext"><%= link_to 'Edit my profile', edit_guardian_path(@guardian) %></div>
+                
+          </div>
+
+		    <br /><br /><br />
+			
+			<% unless @guardian.partners.empty? %>
+				<% for partner in @guardian.partners %>
+					<h2>My Partner Profile </h2>
+					<p>
+					  <b>Name:</b>
+					  <%=h partner.first_name %> <%=h partner.last_name %>
+					</p>
+					<p>
+					  <b>Gender:</b>
+					  <%=h partner.gender %>
+					</p>
+					<p>
+					  <b>Email:</b>
+					  <%=h partner.user.email %>
+					</p>
+					<p>
+					  <b>Cell phone:</b>
+					  <%= number_to_phone (h partner.mobile_phone)%>
+					</p>
+					<p>
+					  <b>Work phone:</b>
+					  <%= number_to_phone (h partner.work_phone)%>
+					</p>
+					<p>
+					  <b>Ethnicity:</b>
+					  <%=h partner.race %>
+					</p>
+					
+					
+				<% end %>
+			<% end %>
+			
+		</td>
+		<!-- spacer -->
+		<td width="35">&nbsp;</td>
+		
+		<!-- right column -->
+		<td valign="top" width="400">
+			<div>
+                <h2>My Household Information</h2>
+                <p><strong>Street: </strong> <%=h @household.street %></p>
+                <p><strong>City: </strong><%=h @household.city %></p>
+                        <p><strong>State: </strong><%=h @household.state %></p>
+                        <p><strong>Zip: </strong><%=h @household.zip %></p>
+                <p><strong>Home phone:</strong> <%= number_to_phone(h(@household.home_phone)) %></p>
+			</div>
+				<div>
+		            <div class="linksicons"><%= link_to(image_tag("edit_home_small.png", :border => 0), edit_household_path(current_user.guardian.household)) %></div>
+		            <div class="linkstext"><%= link_to 'Edit my household', edit_household_path(@household) %></div>
+		    	</div>
+			
+
+          <div>
+                <!-- <div class="linksicons"><%# link_to(image_tag("edit_home_small.png", :border => 0), edit_household_path(current_user.guardian.household)) %>  </div> -->
+                <!-- <div class="linkstext"><%# link_to 'Edit My Household', edit_household_path(current_user.guardian.household) %></div> -->
+          </div>
+			<p>&nbsp;</p>
+            <br /><br />
+			<h2>My Students</h2>
+			<table class="datagrid">
+			  <thead class="datagrid">
+			    <th width="100">Child</th>
+			    <th width="100" align="left">Grade</th>
+				  <th>Edit</th>
+			  </thead>
+
+			<% for student in @students %>
+			  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+			    <td>&nbsp;<%= link_to( h(student.first_name), student_path(student)) %></td>
+			 	<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=h student.new_grade %></td>
+			    <td align="center">
+					<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_student_path(student))  %>&nbsp;
+					<%# link_to(image_tag("icons/delete_dg.gif", :border => 0), student_path(student), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+				</td>
+			  </tr>
+			<% end %>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+
+
+ 

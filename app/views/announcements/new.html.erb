@@ -1,0 +1,28 @@
+<h1>Add a New Announcement</h1>
+<div class="contentlines"></div>
+
+<% form_for(@announcement) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <!-- <%# f.label :contents %><br /> -->
+      <strong>Announcement:</strong></p>
+  <p><%= f.text_area :contents, :rows => 6 %> </p>
+  <p>
+      <strong>Start Date:</strong></p>
+  <p>
+   <!--  <%# f.label :start_date %><br /> -->
+    <%= f.date_select :start_date, :order => [:month, :day, :year] %>
+  </p>
+  <p>
+     <strong>End Date:</strong></p>
+  <p>
+    <!-- <%# f.label :end_date %><br /> -->
+    <%= f.date_select :end_date, :order => [:month, :day, :year] %>
+  </p>
+  <p>
+    <%= f.submit 'Add Announcement' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to announcement list', announcements_path %>

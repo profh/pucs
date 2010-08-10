@@ -1,0 +1,12 @@
+<h1>Forgot My Password</h1>
+<div class="contentlines"></div>
+
+Fill out the form below and instructions to reset your password will be emailed to you:<br />
+<br />
+
+<% form_tag reset_password_path do %>
+  <label>Email address</label><br />
+  <%= text_field_tag "email" %><br />
+  <br />
+  <%= submit_tag "Reset My Password" %>
+<% end %>

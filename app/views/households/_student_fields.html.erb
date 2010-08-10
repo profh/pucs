@@ -1,0 +1,37 @@
+<%# STUDENT FIELDS %>
+<div class="new_guardian">
+	 <div class="linkstext"><%= link_to_function("#{image_tag("/images/icons/close.gif", :border => 0)} Delete student", "$(this).closest('.new_guardian').remove()") %></div>
+				<br />
+				<p>
+					<%= f.label :first_name %><br />
+					<%= f.text_field :first_name %>
+				</p>
+				<p>
+					<%= f.label :last_name %><br />
+					<%= f.text_field :last_name %>
+				</p>
+				<p>
+					<%= f.label :dob, "Date of birth" %><br />
+					<%= f.date_select :dob,  :order => [:month, :day, :year], :start_year => Time.now.year - 16, :end_year => Time.now.year - 4  %>
+				</p>
+				<p>
+					<%= f.label :grade, "Grade" %><br />
+					<%= f.select :grade, GRADE_LIST, :prompt => "Select..." %>
+				</p>
+				<p>
+					<%= f.label :is_female, "Gender" %><br />
+					<%= f.radio_button :is_female, true %>Female<br />
+					<%= f.radio_button :is_female, false %>Male
+				</p>
+				<p>
+					<%= f.label :ethnicity %><br />
+					<%= f.select :ethnicity, RACE_LIST, :prompt => "Select..." %>
+				</p>
+				<p>
+					<%= f.label :engrade_id, "Engrade ID" %><br />
+					<%= f.text_field :engrade_id %>
+				</p>
+</div>
+	<br />
+	<hr color="#C60" />
+	<br />

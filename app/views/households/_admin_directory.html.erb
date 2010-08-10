@@ -1,0 +1,100 @@
+<h1>Family Management</h1>
+<div class="contentlines"></div>
+
+<h5>To view more information for a particular family, click on the name to expand the information.
+	<br />Click on the edit icons to edit any particular piece of information.
+</h5><br />
+</table>
+
+<div id="accordion">
+	
+		<% @households.each do |household| %>
+		
+		<h3>&nbsp;<a href="#"><%=h household.name%></a></h3>
+			<div>
+				<table id="household">
+					
+					<tr>
+						<!-- left column -->
+						<td valign="top" width="400">
+							<h2>Guardian Contact Information <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_guardian_path(household.guardians.primary)) %></h2>
+
+							<p>
+			  				<b>Home Phone:</b>
+			  				<%= number_to_phone (h(household.home_phone))%>
+							</p>
+							
+							<p>
+			  				<%= get_mobile_phones(household.guardians) %>
+							</p>
+
+							<p>
+			  				<%= get_work_phones(household.guardians) %>
+							</p>
+							
+							<p>
+								<%= get_emails(household.guardians) %>
+							</p>
+							
+
+							<h2>Household Information <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_household_path(household)) %></h2>
+							
+							<p>
+			  				<b>Address:</b><br />
+								<%=h household.street%> <br/> <%=h household.city%> <%=h household.state%> <%=h household.zip%>
+							</p>
+							
+							<p>
+								<b>Free Lunch Status:</b><br />
+								<%=h household.lunch%>
+							</p>
+							
+							<p>
+								<b>Parent Type:</b><br />
+								<%=h household.type_of%>
+							</p>
+						</td>
+						
+						<!-- spacer -->
+						<td width="35">&nbsp;</td>
+		
+						<!-- right column -->
+						<td valign="top" width="400">
+							<h2>Student Information</h2>
+							<table>
+								<tr>
+									<th width="175">Name</th>
+									<th width="100">Grade</th>
+								</tr>
+							
+							<% household.students.each do |student|%>
+								<tr>
+									<td> <%=h student.first_name %></td>
+									<td> <%= student.new_grade %> </td>
+     								<td><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_student_path(student)) %></td>
+     								
+     								<td><%= link_to(image_tag("icons/delete_dg.gif", :border => 0), student_path(student), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %></td>
+								</tr>
+							<%end%>
+             </table>
+							
+						</td>
+						
+					</tr>
+				
+				</table>
+			</div>
+	<%end%>
+
+</div>
+
+<br />
+<%= will_paginate @households %>
+<br />
+
+<div>
+<div class="linksicons"><%= link_to(image_tag("home_edit.png", :border => 0), new_household_path)%></div>
+<div class="linkstext"><%= link_to "Click to add a new household", new_household_path %></div>
+</div>
+
+

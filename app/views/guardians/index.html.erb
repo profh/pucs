@@ -1,0 +1,35 @@
+<h1>Select a Guardian to Edit</h1>
+<div class="contentlines"></div>
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="175">Guardian</th>
+    <th width="175">Address</th>
+    <th width="175">Home Phone</th>
+	<th>Actions</th>
+  </thead>
+
+<% for guardian in @guardians %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to( h(guardian.name), guardian_path(guardian)) %></td>
+    <td><p class="small"><%= h guardian.household.street %></p><p class="small"><%=h guardian.household.city%>, <%= h guardian.household.zip%></p></td>
+	<td>&nbsp;&nbsp;<%= number_to_phone (h guardian.household.home_phone)%></td>
+    <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_guardian_path(guardian))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), guardian_path(guardian), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= will_paginate @guardians %>
+
+
+<br />
+<div>
+<div class="linksicons"><%= link_to(image_tag("Icons2/add_user32x32.png", :border => 0), new_guardian_path)%></div>
+<div class="linkstext"><%= link_to "Click to add a new guardian", new_guardian_path %></div>
+</div>
+
+

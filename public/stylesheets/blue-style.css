@@ -1,0 +1,100 @@
+body {
+	font: 0.725em verdana, sans-serif; /* This value makes it so 1.2em = 12px */
+	background: #fff url('../images/bluebg.jpg');
+	color: #000; 
+}
+
+#header {
+	
+}
+
+#logo {
+	float: left;
+	/*padding-botom: 40px;*/
+}
+
+#logo a {
+	text-decoration: none;
+}
+
+#logo a:hover {
+	text-decoration: none;
+	background: none;
+}
+
+#welcome {
+	/*text-align: right;*/
+	float: right;
+	padding: 40px;
+}
+
+#nav {
+	padding-top: 125px;
+	padding-bottom: 40px;
+	margin: 0auto;
+	text-align: center;
+}
+
+#content {
+	padding: 15px;
+	background-color: #ffffff;
+	max-width: 999px;
+	margin: 0 auto;
+}
+
+#footer {
+	font-size: 90%;
+	padding: 10px 0;
+	text-align: center;
+	color: #6c5530;
+	background: ('../images/footer_backend.png');
+}
+	#footer a {
+		color: #6c5530;
+		background: none;
+		text-decoration: none;
+	}
+		#footer a:hover {
+			border: 0;
+			background: #ffc70d;
+		}
+
+#copy {
+	
+	margin: 7px auto;
+	color:#6c5530;
+	text-align:center;
+	font-size:95%;
+	padding: 0px;
+	line-height: 1.25;
+}
+
+	#copy a {
+		color: #0033ff;
+		font-size:85%;
+		text-decoration: none;
+	}
+
+		#copy a:hover {
+			color: #0033ff;
+			text-decoration: underline;
+		}
+
+.clear {
+	clear: both;
+	line-height: 0em; 
+	}
+	
+.smtext {
+	font-size:80%;
+}
+
+.supertiny {
+	font-size:5px;
+}
+
+.note {
+	font-size:85%;
+	font-style: italic;
+	line-height: 1.25;
+}

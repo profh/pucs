@@ -1,0 +1,15 @@
+<%# navigation options for parents %>
+	<ul class="menu">
+		
+		<li><%= link_to 'Events & Activities', home_path("eventsactivities") %></li>
+		<li><%= link_to 'Forms', home_path("forms") %></li>
+		<li><%= link_to 'Volunteer', home_path("volunteer") %></li>
+		<li><%= link_to 'Directory', households_path %></li>
+		<li><%= link_to 'My Family', guardian_path(current_user.guardian) %></li>	
+		<li><%= link_to 'Dashboard', home_path("home") %></li>		
+
+
+
+		<!-- <li><%# link_to 'Virtual Classroom', home_path("home") %></li> -->
+		
+	</ul>

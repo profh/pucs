@@ -1,0 +1,72 @@
+<h1><%= current_user.administrator.first_name%>'s Dashboard </h1>
+<div class="contentlines"></div>
+<table border="0" >
+	<tr><!-- left column -->
+		<td valign="top" >
+			<div class="announcement_content_admin">
+				<h2>Parent Dashboard Reminders</h2>			
+				<div class="quicklinks2"> 
+					<div class="quicklinksicons2"><%= link_to (image_tag("Icons2/megaphone32x32.png", :border=>0), announcements_path) %> </div>
+					<div class="quicklinkstext2">&nbsp;<%= link_to "Click here to add/edit announcements", announcements_path %> </div>
+					<br />
+				</div>				
+				  <ul>
+                  <% for announcement in @announcements %>
+                      <li><%= h announcement.contents %></li><br />
+                  <% end %>
+                  </ul>
+			</div>
+         </td>
+
+		<td width="50">&nbsp;</td>		
+
+		<td valign="top"  ><!-- right column -->
+		<div class="quicklinks">
+			
+          <h2>Quick Links</h2>
+          
+          	<!--Begin Family quicklink -->         	
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/family-icon_add.png", :border => 0), new_household_path)%></div>
+			<div class="quicklinkstext"><%= link_to "Click to add a new family", new_household_path %></div>
+			<br />
+			<!--End Family quicklink -->
+			
+			<!--Begin Guardian quicklink -->
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/edit_profile32x32.png", :border => 0),guardians_path)%></div>
+			<div class="quicklinkstext"><%= link_to "Click to edit a guardian", guardians_path %></div>
+			<br>
+			<!--End Guardian quicklink -->
+			
+			<!--Begin Student quicklink -->
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/student_add_icon.png", :border => 0), new_student_path)%></div>
+			<div class="quicklinkstext"><%= link_to "Click to add a new student", new_student_path %></div>
+			<br />
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/student_edit_icon1.png", :border => 0),students_path)%></div>
+			<div class="quicklinkstext"><%= link_to "Click to edit a student", students_path %></div>
+			<br>
+			<!--End Students quicklink -->
+			
+			<!--Begin volunteer quicklink -->
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/icon-volunteer_add.png", :border => 0), home_path("volunteeradmin"))%></div>
+			<div class="quicklinkstext"><%= link_to "Click to add a volunteer opportunity", home_path("volunteeradmin") %></div>
+			<br />
+			<!--End Volunteer quicklink -->
+			
+			<!--Begin Event/Activity quicklink -->
+			<div class="quicklinksicons"><%= link_to(image_tag("Icons2/calendar_32x32_add.png", :border => 0), home_path("eventsactivitiesadmin"))%></div>
+			<div class="quicklinkstext"><%= link_to "Click to add an event/activity", home_path("eventsactivitiesadmin") %></div>
+			<br /><br />
+			<!--End Event/Activity quicklink -->
+			
+         </div>	
+        </td>
+			
+   </tr>
+
+   <tr>
+        <td class="announcement_content_admin" ><!-- student datagrid -->
+            <h2><%= link_to(image_tag("engrade_logo.png", :border => 0),"http://www.engrade.com/login.php", :popup => true)%><h2>
+		</td>
+		
+	</tr>
+</table>

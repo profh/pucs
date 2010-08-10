@@ -1,0 +1,27 @@
+<h1>Edit My Household Information</h1>
+<div class="contentlines"></div>
+
+<% semantic_form_for(@household) do |f| %>
+  	<%# f.error_messages %>
+
+		<% f.inputs do %>	 
+			<%= f.input :street, :required => true %>
+			<%= f.input :city, :required => true %>
+			<%= f.input :state, :required => true %>
+			<%= f.input :zip, :required => true %>
+			<%= f.input :home_phone, :required => false %>
+			<%= f.input :status, :as => :select, :collection => HOUSEHOLD_STATUS_LIST, :required => false %> 	
+			<% if current_user.admin? %>
+				<%= f.input :free_lunch, :as => :radio, :label => "Free/discounted lunch?", :collection => [["Yes", true], ["No", false]], :required => false %> 	
+			<% end %>
+		<% end %>
+		
+	<%= f.buttons %>
+
+<% end %>
+
+<div>
+    <div class="linksicons"><%= link_to(image_tag("privacy_icon.png", :border => 0), edit_privacy_setting_path(@household.privacy_setting.id)) %></div>
+    <div class="linkstext"><%= link_to 'Edit Privacy Settings', edit_privacy_setting_path(@household.privacy_setting.id) %></div>
+</div>
+

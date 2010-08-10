@@ -1,0 +1,19 @@
+<h1>Change My Password</h1>
+<div class="contentlines"></div>
+
+<% form_for @user, :url => new_password_path, :method => :put do |f| %>
+  <%= f.error_messages %>
+ 
+  <p>New password<br />
+  <!--<%# f.label :password %><br /> -->
+  <%= f.password_field :password %><br /></p>
+  <br />
+  
+  <p>New password confirmation<br />
+  <!--  <%# f.label :password_confirmation %><br /> -->
+  <%= f.password_field :password_confirmation %><br /></p>
+  <br />
+
+  
+  <p><%= f.submit "Change Password" %></p>
+<% end %>

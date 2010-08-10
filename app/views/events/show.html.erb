@@ -1,0 +1,33 @@
+<p>
+  <b>Starting at:</b>
+  <%=h @event.starting_at %>
+</p>
+
+<p>
+  <b>Ending at:</b>
+  <%=h @event.ending_at %>
+</p>
+
+<p>
+  <b>Num volunteers needed:</b>
+  <%=h @event.num_volunteers_needed %>
+</p>
+
+<p>
+  <b>Event name:</b>
+  <%=h @event.event_name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @event.location %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @event.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

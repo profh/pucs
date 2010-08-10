@@ -1,0 +1,28 @@
+<h1>Editing signup</h1>
+
+<% form_for(@signup) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :guardian_id %><br />
+    <%= f.text_field :guardian_id %>
+  </p>
+  <p>
+    <%= f.label :event_id %><br />
+    <%= f.text_field :event_id %>
+  </p>
+  <p>
+    <%= f.label :attended %><br />
+    <%= f.check_box :attended %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @signup %> |
+<%= link_to 'Back', signups_path %>

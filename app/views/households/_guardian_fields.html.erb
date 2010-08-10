@@ -1,0 +1,56 @@
+<%# GUARDIAN FIELDS %>
+<div class="new_guardian">
+	 <div class="linkstext"><%= link_to_function("#{image_tag("/images/icons/close.gif", :border => 0)} Delete guardian", "$(this).closest('.new_guardian').remove()") %></div>
+	 
+			<br />
+			<p>
+				<%= f.label :first_name, "First name" %><br />
+				<%= f.text_field :first_name %>
+			</p>
+			<p>
+				<%= f.label :last_name, "Last name" %><br />
+				<%= f.text_field :last_name %>
+			</p>
+			<p>
+				<%= f.label :is_female, "Gender" %><br />
+				<%= f.radio_button :is_female, true %>Female<br />
+				<%= f.radio_button :is_female, false %>Male
+			</p>
+			<p>
+				<%= f.label :ethnicity, "Ethnicity" %><br />
+				<%= f.select :ethnicity, RACE_LIST, :prompt => "Select..." %>
+			</p>
+			<p>
+				<%= f.label :relationship, "Relationship to student" %><br />
+				<%= f.select :relationship, RELATIONSHIP_LIST, :prompt => "Select..." %>
+			</p>
+			<p>
+				<%= f.label :mobile_phone, "Mobile phone number" %><br />
+				<%= f.text_field :mobile_phone %>
+			</p>
+			<p>
+				<%= f.label :work_phone, "Work phone number" %><br />
+				<%= f.text_field :work_phone %>
+			</p>
+			<p>
+				<%= f.label :security_form, "Security form submitted?" %><br />
+				<%= f.radio_button :security_form, true %>Yes<br />
+				<%= f.radio_button :security_form, false %>No
+			</p>
+			<p>
+				<%= f.label :is_primary, "Primary guardian?" %><br />
+				<%= f.radio_button :is_primary, true %>Yes<br />
+				<%= f.radio_button :is_primary, false %>No
+			</p>
+			<br />
+
+<!-- Add a user -->
+<legend><h2>Create login access</h2></legend>
+<% f.fields_for :user do |user_form| %>
+	<%= render :partial => 'user_fields', :locals => { :f => user_form } %>
+<% end %>
+
+</div>
+	<br />
+	<hr color="#C60"/>
+	<br />

@@ -1,0 +1,55 @@
+<%# footer menu and copyright %>
+<p>&nbsp;</p>
+
+<div id="footer">
+		
+	<div id="footerleft">
+		
+		<div id="globalnav">
+          <ul>
+		  	<li><%= link_to "Home", home_path('home') %> </li>&nbsp;&nbsp;::&nbsp;&nbsp;
+		  	<li><a href="#topofpage">Top of Page</a> </li>&nbsp;&nbsp;::&nbsp;&nbsp;
+		    <li><%= link_to "PUCS.org", "http://www.pucs.org", :popup => true %> </li>&nbsp;&nbsp;::&nbsp;&nbsp;
+		  	<li><%= link_to "Contact Us", home_path('contact') %> </li>&nbsp;&nbsp;::&nbsp;&nbsp;
+		  	<li><%= link_to "Privacy Policy", home_path('privacy') %> </li>
+		  	<br /><br />
+          </ul>
+		</div>
+		
+		<div id="footer-bottom-left">
+			
+				<table>
+					<tr>
+						<td><br /><%= link_to(image_tag("fb_footer.png", :border => 0), "http://www.facebook.com/pages/Pittsburgh-Urban-Christian-School/117928408224372", :popup => true) %> &nbsp; &nbsp; </td>
+						<td>809 Center Street<br />
+                            Pittsburgh, PA 15221 &nbsp; &nbsp; &nbsp;
+                        </td>
+						<td><br />Phone: (412) 244-1779<br />
+							Fax: (412) 244-9027<br />
+							Email: <%= link_to 'office@pucs.org', "mailto:office@PUCS.org" %>
+						</td>
+					</tr>
+				</table>
+			
+		</div>	
+	</div>	<!-- Close footerleft -->
+				
+		<div class="footerright">
+		
+			<div id="footercopyright">
+			  	<p>&copy 2010 Pittsburgh Urban Christian School<br /></p>
+			  	<p>Created by <%= link_to "Team e3, Carnegie Mellon University", "http://pawn.hss.cmu.edu/~pucsteam" %></p>
+			</div>
+			
+            <div id="footer-bottom-right" style="text-align: left;">
+              <table>
+                  <tr>
+                   <!--   <td><%= link_to(image_tag("asci_footer.png", :border => 0), "http://www.acsi.org/", :popup => true)%> &nbsp; &nbsp;</td> -->
+                      <td><%= link_to(image_tag("stc_footer_png.png", :border => 0), "http://www.schoolsthatcan.org", :popup => true)%></td>
+                  </tr>
+              </table>
+            </div>
+
+		</div> <!-- Close footerright -->
+		
+</div> <!-- Close footer -->

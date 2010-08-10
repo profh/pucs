@@ -1,0 +1,23 @@
+<p>
+  <b>Guardian:</b>
+  <%=h @signup.guardian_id %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%=h @signup.event_id %>
+</p>
+
+<p>
+  <b>Attended:</b>
+  <%=h @signup.attended %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @signup.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_signup_path(@signup) %> |
+<%= link_to 'Back', signups_path %>

@@ -1,0 +1,18 @@
+<p>
+  <b>Contents:</b>
+  <%=h @announcement.contents %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @announcement.start_date.strftime("%B %e, %Y") %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%=h @announcement.end_date.strftime("%B %e, %Y") %>
+</p>
+
+
+<%= link_to 'Edit this announcement', edit_announcement_path(@announcement) %> |
+<%= link_to 'Back to announcement list', announcements_path %>

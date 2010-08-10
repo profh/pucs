@@ -1,0 +1,96 @@
+<h1>Family Directory</h1>
+<div class="contentlines"></div>
+
+<h5>To view more information for a particular family, click on the name to expand the information.</h5>
+</table>
+
+<div id="accordion">
+		
+		<% @households.each do |household| %>
+		
+		<h3><a href="#"><%=h household.name%></a></h3>
+		<div>	
+			<p>
+				<table id="household">
+					
+					<tr>
+						<!-- left column -->
+						<td valign="top" width="400">
+							<h2>Guardian Contact Information</h2>
+						
+							
+							<%if household.privacy_setting.public_home_phone %>
+							<p>
+			  					<b>Home Phone:</b>
+			  					<%= number_to_phone (h household.home_phone)%>
+							</p>
+							<%end%>
+							
+							<%if household.privacy_setting.public_other_phones%>
+							<p>
+			  					<%= get_mobile_phones(household.guardians) %>
+							</p>
+							<p>
+			  					<%= get_work_phones(household.guardians) %>
+							</p>
+							<%end%>
+							
+							<%if household.privacy_setting.public_emails%>
+							<p>
+								<%= get_emails(household.guardians) %>
+							</p>
+							<%end%>
+							
+
+							<h2>Household Information</h2>
+							
+							<%if household.privacy_setting.public_address%>
+							<p>
+			  					<b>Address:</b><br />
+								<%=h household.street%> <br/> <%=h household.city%> <%=h household.state%> <%=h household.zip%>
+							</p>
+							<%end%>
+							
+						</td>
+						
+						<!-- spacer -->
+						<td width="35">&nbsp;</td>
+		
+						<!-- right column -->
+						<td valign="top" width="400">
+							<h2>Student Information</h2>
+                          <p>
+							<table>
+								<tr>
+									<th width="125">Name</th>
+									<th width="75">Grade</th>
+								</tr>
+							
+							<%if household.privacy_setting.public_children%>
+							<% household.students.each do |student|%>
+								<tr>
+									<td> <%=h student.first_name %></td>
+									<td> <%= student.new_grade %> </td>
+								</tr>
+							<%end%>
+							<%end%>
+                            </table>
+                          </p>
+							
+						</td>
+						
+					</tr>
+				
+				</table>
+					
+			</p>
+		</div>
+	<%end%>
+
+</div>
+
+<br />
+<%= will_paginate @households %>
+<br /><br />
+
+

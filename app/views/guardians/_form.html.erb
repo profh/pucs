@@ -1,0 +1,32 @@
+<% semantic_form_for(@guardian) do |f| %>
+  <%# f.error_messages %>
+
+	<% f.inputs do %>
+		<%= f.input :first_name, :required => true %>
+		<%= f.input :last_name, :required => true %>
+		<% if current_user.admin? %>
+			<%= f.input :household, :required => true, :collection => Household.active.by_guardians.map{|h| [h.name,h.id]} %>
+		<% end %>
+		<%= f.input :relationship, :as => :select, :collection => RELATIONSHIP_LIST, :required => false %> 
+		<%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Female", true], ["Male", false]], :required => false %>
+  	<%= f.input :ethnicity, :as => :select, :collection => RACE_LIST, :required => false %>
+		<%= f.input :mobile_phone, :required => false %>
+		<%= f.input :work_phone, :required => false %>
+		<% if current_user.role == "admin" %>
+			<%= f.input :security_form, :as => :radio, :label => "Security form", :collection => [["Submitted", true], ["Not yet submitted", false]], :required => false %>
+		<% end %>
+		<% if current_user.role == "admin" %>
+			<%= f.input :active, :as => :radio, :label => "Active", :collection => [["Yes", true], ["No", false]], :required => false %>
+		<% end %>
+	<% end %>
+	
+ <%= f.buttons %>
+	<% unless current_user.admin? %>
+		<p align="right"><%= link_to 'Change my password', change_password_path %></p>
+	<% end %>
+<% end %>
+
+<div>
+    <div class="linksicons"><%= link_to(image_tag("privacy_icon.png", :border => 0), edit_privacy_setting_path(@guardian.household.privacy_setting.id)) %></div>
+    <div class="linkstext"><%= link_to 'Edit Privacy Settings', edit_privacy_setting_path(@guardian.household.privacy_setting.id) %></div>
+</div>
