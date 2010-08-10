@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :privacy_settings
   
   # routes for authentication
-  map.signup 'signup', :controller => 'users', :action => 'new'
+  map.signup 'secret_signup', :controller => 'users', :action => 'new' # remove later...
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.resources :user_sessions

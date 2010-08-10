@@ -25,8 +25,8 @@ class UsersController < ApplicationController
   end
   
   def destroy
-  	@user=User.find(params[:id])
-  	@user.make_inactive
-  	redirect_to home_path("home")
-  
+    @user=User.find(params[:id])
+    @user.make_inactive
+    redirect_to home_path("home")
+  end
 end
